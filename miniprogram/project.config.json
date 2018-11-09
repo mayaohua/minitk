@@ -4,17 +4,20 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": false,
+		"urlCheck": true,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
-		"newFeature": true
+		"newFeature": true,
+		"nodeModules": false
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.3.1",
+	"libVersion": "2.4.0",
 	"appid": "wxa450f03dfe3752e0",
 	"projectname": "minitk",
 	"isGameTourist": false,
+	"cloudfunctionRoot": "cloudfunctions/",
+    "miniprogramRoot":"miniprogram/",
 	"condition": {
 		"search": {
 			"current": -1,

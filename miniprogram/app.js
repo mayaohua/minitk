@@ -1,12 +1,11 @@
 //app.js
 App({
   onLaunch: function () {
-    wx.onUserCaptureScreen(function (res) {
-      console.log(res)
-    //   wx.showToast({
-    //     title: '用户截屏了',
-    //     icon: 'none',
-    //   })
+    wx.cloud.init({
+        traceUser: true,
+    })
+    wx.cloud.init({
+        env: 'test'
     })
     //获取设备信息
     this.getSySinfo();
@@ -14,7 +13,7 @@ App({
     this.globalData.action_data = null;
     //wx.clearStorage();
     typeof cb == "function" && cb(this.globalData.action_data);
-    this.login();
+    //this.login();
   },
   /**
    * 全局数据
@@ -23,7 +22,7 @@ App({
     userInfo: null,
     user_token: null,
     screen: {},
-    fangdaourl: 'https://www.mymmy.cn/wx/tk/showimg?url=',
+    fangdaourl: 'https://www.mymy.tk/wx/tk/showimg?url=',
     action_data: false,
     userOtherInfo: null,
     minshare: 20,
@@ -92,7 +91,7 @@ App({
         if (res.code) {
           //发起网络请求
           wx.request({
-            url: 'https://www.mymmy.cn/wx/tk/login?code=' + res.code,
+            url: 'https://www.mymy.tk/wx/tk/login?code=' + res.code,
             data: {},
             success: function (result) {
               console.log('登录成功');
@@ -159,7 +158,7 @@ App({
     //获取临时跳转页面
     var that = this;
     wx.request({
-      url: 'https://www.mymmy.cn/wx/tk/user',
+      url: 'https://www.mymy.tk/wx/tk/user',
       method: 'POST',
       data: {
         user_token: this.globalData.user_token,
@@ -314,7 +313,7 @@ App({
       mask: true,
     })
     var that = this;
-    this.myrequest('https://www.mymmy.cn/wx/tk/share', 'POST', false, function (res) {
+    this.myrequest('https://www.mymy.tk/wx/tk/share', 'POST', false, function (res) {
       if (res.code == 0) {
         wx.showToast({
           title: '分享成功',
