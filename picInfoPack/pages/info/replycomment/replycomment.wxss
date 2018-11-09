@@ -1,0 +1,24 @@
+@import '/public/style/weui.wxss';
+.comment-bar{
+  display: flex;
+  align-items: center;
+  
+}
+.comment-bar .button{
+  margin-top:0;
+  flex: 1;
+  text-align: center;
+  
+}
+.comment-bar .button button{
+  font-size: 32rpx;
+}
+.comment-bar text{
+  flex: 2;
+  text-align: center;
+  font-size: 34rpx;
+  color:#666;
+}
+textarea,.weui-textarea-counter{
+  font-size:34rpx;
+}

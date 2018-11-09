@@ -1,0 +1,18 @@
+.topage{
+  width: 80rpx;
+  height: 80rpx;
+  background: rgba(255, 255, 255,1);
+  position: fixed;
+  bottom:50rpx;
+  right: 50rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+  transition: 0.5s all;
+  border: 1px solid #1296db;
+}
+.topage image{
+  width: 60%;
+  height: 60%;
+}

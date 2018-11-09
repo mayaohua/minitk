@@ -1,0 +1,10 @@
+<!--pages/components/loadmore/loadmore.wxml-->
+<view class='page'>
+  <view class="loadmore weui-loadmore {{loadmore[index].show && loadmore[index].showtype == 1?'show':'hide'}}">
+      <view class="weui-loading"></view>
+      <view class="weui-loadmore__tips">{{loadmore[index].text}}</view>
+  </view> 
+    <view class="loadmore weui-loadmore weui-loadmore_line {{loadmore[index].show  && loadmore[index].showtype == 2?'show':'hide'}}">
+      <view bindtap='onretry' class="weui-loadmore__tips weui-loadmore__tips_in-line">{{loadmore[index].text}}</view>
+    </view>
+</view>

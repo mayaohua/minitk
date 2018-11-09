@@ -1,0 +1,37 @@
+<view class="page">
+  <view class='user-wrap'>
+    <image class='bg' src="/public/img/user_bg.png"></image>
+    <view class='info'>
+        <view class="user-pic">
+          <image class="user-pic" src='{{item.user_pic}}'></image>    
+        </view>    
+        <view class="user-nike" >{{item.user_nike}}</view>
+    </view>
+  </view>
+  <!-- <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">获取手机号</button>
+  <button wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="onGetUserInfo">授权登录</button>
+  <button open-type='contact' style='text-align:center;font-size:14px;color:skyblue;'>在线客服</button> -->
+  <scroll-view scroll-x="true">
+      <view class='action-list'>
+          <view  class='item'>
+            <image src='/public/img/sex_blue.png'></image>
+            <text>{{item.user_sex?'男':'女'}}</text>
+          </view>
+          <view  class='item'>
+            <image src='/public/img/message2_blue.png'></image>
+            <text>{{item.com_count}}</text>
+          </view>
+          <view  class='item'>
+            <image src='/public/img/myup_blue.png'></image>
+            <text>{{item.up_count}}</text>
+          </view>
+          <view  class='item'>
+            <image src='/public/img/share_blue.png'></image>
+            <text>{{item.share_count}}</text>
+          </view>
+      </view>
+  </scroll-view>
+  <view class='other'>
+    O_O
+  </view>
+</view>

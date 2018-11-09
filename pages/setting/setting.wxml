@@ -1,0 +1,77 @@
+<view class="page">
+  <view class='user-wrap'>
+    <image src="/public/img/user_bg.png"></image>
+    <view class='info'>
+        <view class="user-pic">
+          <button wx:if="{{!isLogin && canIUse}}" open-type="getUserInfo" bindgetuserinfo="onGetUserInfo">点击授权</button>
+          <open-data class="user-pic" type="userAvatarUrl"></open-data>    
+        </view>    
+        <open-data class="user-nike" type="userNickName"></open-data>
+    </view>
+  </view>
+  <!-- <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">获取手机号</button>
+  <button wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="onGetUserInfo">授权登录</button>
+  <button open-type='contact' style='text-align:center;font-size:14px;color:skyblue;'>在线客服</button> -->
+  <scroll-view class='action-list' scroll-y="true">
+      <navigator hover-class='none' url="/settingPack/pages/setting/meshare/meshare" class='item'>
+          <view class='left'>
+            <image src='/public/img/share_blue.png'></image>
+            <text>我的分享</text>
+          </view>
+          <view class='right'>
+            <text>{{share_count}}/{{share_count_min}}</text>
+            <image src='/public/img/right_jt.png'></image>
+          </view>
+      </navigator>
+      <view catchtap='onToMeComment' class='item'>
+          <view class='left'>
+            <image src='/public/img/message2_blue.png'></image>
+            <text>我的评论</text>
+          </view>
+          <view class='right'>
+            <text>{{mecomment_count}}</text>
+            <image src='/public/img/right_jt.png'></image>
+          </view>
+      </view>
+      <view catchtap='onToMeLike' class='item'>
+          <view class='left'>
+            <image src='/public/img/myup_blue.png'></image>
+            <text>我的喜欢</text>
+          </view>
+          <view class='right'>
+            <text>{{melike_count}}</text>
+            <image src='/public/img/right_jt.png'></image>
+          </view>
+      </view>
+      <navigator hover-class='none' url="/settingPack/pages/setting/about/about" class='item'>
+        <view class='left'>
+          <image src='/public/img/help_blue.png'></image>
+          <text>帮助反馈</text>
+        </view>
+        <view class='right'>
+          <text></text>
+          <image src='/public/img/right_jt.png'></image>
+        </view>
+      </navigator>
+      <view class='item' bindtap='clearStro'>
+          <view class='left'>
+            <image src='/public/img/delete_blue.png'></image>
+            <text>清除缓存</text>
+          </view>
+          <view class='right'>
+            <text></text>
+            <image src='/public/img/right_jt.png'></image>
+          </view>
+      </view>
+      <navigator hover-class='none' url="/settingPack/pages/setting/other/other" class='item'>
+        <view class='left'>
+          <image src='/public/img/ceping_blue.png'></image>
+          <text>瞧一瞧</text>
+        </view>
+        <view class='right'>
+          <text></text>
+          <image src='/public/img/right_jt.png'></image>
+        </view>
+      </navigator>
+  </scroll-view>
+</view>

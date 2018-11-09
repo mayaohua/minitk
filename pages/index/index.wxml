@@ -1,0 +1,7 @@
+<my-topstatus bgcolor="white"></my-topstatus>
+<view class="page">
+     <view class="page__bd">
+      <my-listwrap scrolltopshow="{{scrolltopshow}}" bind:scrollTopBack="onScrollTopBack" listcount="{{listcount}}" imgurllist="{{imgurllist}}" requestAction="{{requestAction}}" requesturl="{{requesturl}}" bind:callback="onReqBack"></my-listwrap>
+      <my-loadmore  index = "{{loadmore}}" bind:retry="onRetry"></my-loadmore>
+    </view>
+</view>

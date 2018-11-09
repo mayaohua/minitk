@@ -1,0 +1,6 @@
+/* pages/components/listwrap/listwrap.wxss */
+
+.list-wrap{
+  display: flex; 
+  flex-flow: row;
+}

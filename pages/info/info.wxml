@@ -1,0 +1,78 @@
+
+<view class='page'  style='display:{{infodata.pic_id?"block":"none"}};'>
+    <view class='picwrap'>
+      <view class='imgtext'>
+        <navigator url="/pages/case/caselist/caselist?cid={{infodata.pic_classify_id}}&case_name={{infodata.classify_name}}" hover-class='none'>#{{infodata.classify_name}}#</navigator>
+        <text>{{content.showAll?infodata.pic_content:infodata.spliceText?infodata.spliceText:infodata.pic_content}}</text>
+        <text wx-if="{{infodata.spliceText}}" bindtap='onConTextAll' class='text-too-len' >[{{content.showAll?'点击收起':'点击展开'}}]</text>
+      </view>
+      <image bindtap='preview' data-url="{{infodata.url}}" src="{{tempImgUrl?tempImgUrl:'/public/img/imgload.gif'}}" style="{{tempImgUrl ? 'height:' + infodata.imgh + 'px' : ''}}"></image>
+      <view class='actionwrap'>
+          <view class='left'>
+              <view class='like' bindtap='onMeLike'><image src='/public/img/{{infodata.me_thumbs_up?"like_fill_on":"like_light"}}.png'></image><text>{{infodata.up_count}}</text></view>
+              <view class='comment'><image src='/public/img/message_light.png'></image><text>{{infodata.comment_count}}</text></view>
+          </view>
+          <view class='right'>
+              <view></view>
+              <view class='share'>
+                <button class='share' id="shareBtn" open-type="share" type="primary" hover-class="other-button-hover">
+                  <image src='/public/img/share_light.png'></image>
+                </button>
+              </view>
+          </view>
+      </view>
+    </view>
+    <view class='commentwrap'>
+      <view class='tip'>
+        <text>评论列表</text>
+        <view bindtap='changeDes'>
+          <text>{{com_des?'正序':'倒叙'}}</text>
+          <image src="/public/img/list_{{com_des?'blue':'red'}}.png"></image>
+        </view>
+      </view>
+      <view class='comment' style='display:{{comment.length?"block":"none"}};'>
+        <view class='item' wx:for="{{comment}}" wx:for-index="index" wx:for-item="item" wx:key="*this">
+            <view class='user'>
+              <view class="info">
+                  <navigator wx:if="{{!item.isme}}" hover-class='none' url="/picInfoPack/pages/info/usercenter/usercenter?id={{item.user_id}}">
+                    <image src='{{item.user_pic}}'></image>
+                  </navigator>
+                  <image wx:if="{{item.isme}}" src='{{item.user_pic}}'></image>
+                  <view class='text'>
+                      <text class='nike'>{{item.user_nike}}</text>
+                      <text class='time'>{{item.com_created_date}}</text>
+                  </view> 
+              </view>
+              <view class='userdata'>
+                <navigator wx:if="{{!item.isme}}" class='comment' hover-class='none' url="/picInfoPack/pages/info/replycomment/replycomment?pid={{item.com_id}}&user_nike={{item.user_nike}}&pic_id={{infodata.pic_id}}">
+                  <image src='/public/img/message.png'></image>
+                  <text>回复</text>
+                </navigator>
+              </view>
+            </view>
+            <view class='com_content'>
+                <view class='listcon'>
+                      <view style='display:inline' wx-if="{{item.pcom}}">
+                      <text class='msg'>回复@</text>
+                      <navigator hover-class='none' url="/picInfoPack/pages/info/usercenter/usercenter?id={{item.pcom.user_id}}" class='nike' style="color:#1296db;display:inline">{{item.pcom.user_nike}}</navigator>：</view>
+                      <text class='msg'>{{item.showAll || !item.spliceText?item.com_content:item.spliceText}}</text>
+                      <text wx-if="{{item.spliceText}}" data-who='0' data-index='{{index}}' bindtap='onComTextAll' class='text-too-len' >[{{item.showAll?'点击收起':'点击展开'}}]</text>
+                </view>
+                <view class='othercomwrap' wx-if="{{item.pcom}}" >
+                      <text class='nike'>{{item.pcom.user_nike}}</text>
+                      <text class='msg'>： {{item.pcom.showAll || !item.pcom.spliceText?item.pcom.com_content:item.pcom.spliceText}}</text>
+                      <text wx-if="{{item.pcom.spliceText}}" data-who='1' data-index='{{index}}' bindtap='onComTextAll' class='text-too-len' >[{{item.pcom.showAll?'点击收起':'点击展开'}}]</text>
+                </view>
+            </view>
+        </view>
+      </view>
+      <view class='nocomment' style='display:{{comment.length?"none":"block"}};height:comment.length?"80px":"0"'>
+          {{commenttip}}
+      </view>
+    </view>
+    <view class='mecom'>
+    <!-- <textarea class='input' fixed placeholder="说说你的看法吧！" confirm-type="done" show-confirm-bar="false" cursor-spacing="10" /> -->
+      <navigator class='input' hover-class='none' url="/picInfoPack/pages/info/replycomment/replycomment?pic_id={{infodata.pic_id}}&pid=0" >说说你的看法吧！</navigator>
+    </view>
+    <my-topage bind:toPageBack="onToIndexPage" toPageValue="{{topageValue}}"></my-topage>
+</view>

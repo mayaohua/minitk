@@ -1,0 +1,9 @@
+<!--pages/components/listwrap/listwrap.wxml-->
+ <view class="weui-flex list-wrap">
+    <!-- 竖向盒子  -->
+    <view class="weui-flex__item items-wrap" wx:for="{{column}}" wx:for-index="index" wx:for-item="item" wx:key="*this" style='width:calc(100%/{{column.length}});'>
+      <!-- 纵向盒子  -->
+      <my-item item="{{item}}" pid="{{index}}" imgurllist="{{imgurllist}}" bind:changemelike="onChangeMeLike"/>
+    </view>
+  </view>
+  <my-scrolltop scrollTopShow = "{{scrolltopshow}}" bind:scrollTopBack="onScrollTopBack"></my-scrolltop>

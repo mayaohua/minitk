@@ -1,0 +1,19 @@
+.page{
+  width: 98%;
+  margin:0 auto;
+}
+input{
+  font-size: 32rpx;
+}
+.phcolor,weui-textarea-counter{
+  font-size: 30rpx;
+}
+.tips{
+  color:red;
+}
+.welcome{
+  color:#666;
+  font-size:26rpx;
+  margin:10px 15px;
+  display: block;
+}

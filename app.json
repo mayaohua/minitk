@@ -1,0 +1,69 @@
+{
+	"pages": [
+		"pages/index/index",
+		"pages/umsg/umsg",
+		"pages/case/case",
+		"pages/case/caselist/caselist",
+		"pages/info/info",
+		"pages/userbang/userbang",
+    "pages/setting/setting"
+	],
+  "subPackages": [
+    {
+      "root": "settingPack",
+      "pages": [
+        "pages/setting/meshare/meshare",
+        "pages/setting/mecomment/mecomment",
+        "pages/setting/melike/melike",
+        "pages/setting/about/about",
+        "pages/setting/other/other"
+      ]
+    },
+    {
+      "root": "picInfoPack",
+      "pages": [
+        "pages/info/replycomment/replycomment",
+        "pages/info/preview/preview",
+        "pages/info/usercenter/usercenter"
+      ]
+    }
+  ],
+	"window": {
+		"backgroundTextStyle": "dark",
+		"navigationBarBackgroundColor": "#fff",
+		"navigationBarTitleText": "迷你图",
+		"navigationBarTextStyle": "black",
+		"navigationStyle": "default"
+	},
+	"tabBar": {
+		"color": "black",
+		"selectedColor": "#1296db",
+		"list": [{
+			"pagePath": "pages/index/index",
+			"text": "推荐",
+			"selectedIconPath": "public/img/index_blue.png",
+			"iconPath": "public/img/index.png"
+		}, {
+			"pagePath": "pages/case/case",
+			"text": "分类",
+			"selectedIconPath": "public/img/case_blue1.png",
+			"iconPath": "public/img/case.png"
+		}, {
+			"pagePath": "pages/umsg/umsg",
+			"text": "消息",
+			"selectedIconPath": "public/img/umsg_blue.png",
+			"iconPath": "public/img/umsg.png"
+		}, {
+			"pagePath": "pages/setting/setting",
+			"text": "我的",
+			"selectedIconPath": "public/img/user_blue.png",
+			"iconPath": "public/img/user.png"
+		}]
+	},
+	"networkTimeout": {
+		"request": 10000,
+		"downloadFile": 20000
+	},
+	"debug": false
+
+}

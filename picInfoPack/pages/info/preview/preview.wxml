@@ -1,0 +1,10 @@
+<view class='page'>
+    <cover-view  class='topage' style='bottom:{{topageValue.bottom}}rpx;right:{{topageValue.right}}rpx;display:{{isshare?"flex":"none"}}'>
+        <cover-image bindtap='saveimage'  src='{{topageValue.img}}'/>
+    </cover-view>
+    <cover-view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips}}" style='background:{{tipbgcolor}}'>{{downloadPercent}}</cover-view>
+    <view  class='picwrap' style="width:{{img.w}}px;height:{{img.h}}px;">
+        <image style="width:{{img.w}}px;height:{{img.h}}px;" src='{{tempImgUrl?tempImgUrl:img.temp}}'></image>
+        <canvas hidden='{{isshare}}'  class='canvas' style="width:{{img.w}}px;height:{{img.h}}px;" canvas-id="firstCanvas"></canvas>
+    </view>
+</view>

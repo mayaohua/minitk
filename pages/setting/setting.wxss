@@ -1,0 +1,100 @@
+
+.page{
+  height: 100vh;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  align-content: center;
+}
+.user-wrap{
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content:space-around;
+  flex-flow: column;
+  flex: 1;
+}
+.user-wrap image{
+  display: block;
+  width: 100%;
+  position: absolute;
+  height: 100%;
+  z-index: -1;
+}
+.user-wrap .info{
+  display: flex;
+  flex-flow: column;
+  align-items:center;
+  margin-top: 35px;
+  flex-direction: column;
+}
+.user-wrap .info .user-pic{
+  overflow:hidden;
+  display: block;
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 50%;
+  /* border: 2px solid #fff; */
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+.user-wrap .info .user-pic button{
+  position: absolute;
+  z-index: 1;
+  font-size: 25rpx;
+  background: #fff;
+  top:0;
+  bottom:0;
+  left: 0;
+  right:0;
+  text-align: center;
+  line-height: 160rpx;
+}
+.user-wrap .info .user-nike{
+  font-size: 35rpx;
+  margin-top: 20rpx;
+  color:#666;
+}
+.action-list{
+  display: flex;
+  flex-flow: column;
+  flex: 2;
+  width: 95%;
+}
+.action-list .item{
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  border-bottom: 1px solid #eee;
+  padding:15px 0;
+  align-items: center;
+}
+.action-list .item .left{
+  font-size: 30rpx;
+  color:#666;
+  display: flex;
+  align-content: center;
+}
+.action-list .item .left image{
+  width: 40rpx;
+  height: 40rpx;
+}
+.action-list .item .left text{
+  margin-left: 5px;
+}
+.action-list .item .right{
+  font-size: 28rpx;
+  color:#666;
+  display: flex;
+  align-items: center;
+}
+
+.action-list .item .right image{
+  width: 30rpx;
+  height: 30rpx;
+  margin-left: 5px;
+}
+.action-list .item .right text{
+  margin-left: 5px;
+}

@@ -1,0 +1,24 @@
+<my-loadmore  index = "{{loadmore}}" bind:retry="onRetry"></my-loadmore>
+<view class="page" wx:if="{{nav.length>0}}">
+  <view class='left-case'>
+    <scroll-view scroll-y scroll-with-animation="true" style="height: 100vh;">
+      <view  bindtap="changePcase" wx:for="{{nav}}" wx:for-index="index" wx:for-item="item" wx:key="*this" 
+      wx:if="{{item.classify_pid==0}}" class="{{showNavIndex==0 && index == 0?'on':showNavIndex==item.classify_id?'on':''}}"
+      data-cid="{{item.classify_id}}">{{item.classify_name}}</view>
+    </scroll-view> 
+  </view>
+  <view class='right-case'>
+    <scroll-view scroll-y scroll-with-animation="true" style="height: 100vh;">
+      <view class='case-wrap' wx:if="{{navChlid.length}}">
+        <navigator hover-class="none"  class='case-item' wx:for="{{navChlid}}" wx:for-index="index" wx:for-item="item" wx:key="*this"  
+        url="{{'../case/caselist/caselist?cid='+item.classify_id+'&case_name='+item.classify_name}}">
+          <image bindload="imageLoad" mode='aspectFit' src="{{item.classify_icon_url}}"></image>
+          <text>{{item.classify_name}}</text>
+        </navigator>
+      </view>
+      <view class='case-wrap' wx:else style='text-align:center;'>
+          <text style='margin-top:20px;font-size:12px;width:100%;color:#666'>{{tapmsg}}</text>
+      </view>
+    </scroll-view>
+  </view>
+</view>

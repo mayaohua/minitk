@@ -1,0 +1,3 @@
+@import '/public/style/weui.wxss';
+page{
+}

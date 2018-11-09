@@ -1,0 +1,5 @@
+<!--components/scrolltop.wxml-->
+
+<view  class='topage' style='bottom:{{toPageValue.bottom}}rpx;right:{{toPageValue.right}}rpx;display:{{toPageValue.show?"flex":"none"}}'>
+  <image bindtap='onToPage'  src='{{toPageValue.img}}'></image>
+</view>

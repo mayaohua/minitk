@@ -1,0 +1,18 @@
+.topbar{
+  flex: 1;
+}
+.title{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.title image{
+  margin-left: 10px;
+  transform: rotate(180deg)
+}
+.title text{
+  flex:1;
+  display: block;
+  text-align: center;
+
+}

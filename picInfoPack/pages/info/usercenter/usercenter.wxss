@@ -1,0 +1,97 @@
+
+.page{
+  height: 100vh;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  align-content: center;
+}
+.user-wrap{
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content:space-around;
+  flex-flow: column;
+  flex: 1;
+}
+.user-wrap image{
+  display: block;
+  width: 100%;
+  position: absolute;
+  height: 100%;
+  z-index: -1;
+}
+.user-wrap .bg{
+    transform: rotate(180deg)
+}
+.user-wrap .info{
+  display: flex;
+  flex-flow: column;
+  align-items:center;
+  margin-top: 35px;
+  flex-direction: column;
+}
+.user-wrap .info .user-pic{
+  overflow:hidden;
+  display: block;
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 50%;
+  /* border: 2px solid #fff; */
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+.user-wrap .info .user-pic button{
+  position: absolute;
+  z-index: 1;
+  font-size: 25rpx;
+  background: #fff;
+  top:0;
+  bottom:0;
+  left: 0;
+  right:0;
+  text-align: center;
+  line-height: 160rpx;
+}
+.user-wrap .info .user-nike{
+  font-size: 35rpx;
+  margin-top: 20rpx;
+  color:#666;
+}
+scroll-view{
+  flex: 1;
+  width: 95%;
+}
+.action-list{
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  border-bottom:1px solid #eee;
+  margin:0 auto;
+}
+.action-list .item:first-child{
+  border-left:1px solid #eee;
+}
+.action-list .item{
+  flex: 1;
+  border-right:1px solid #eee;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+.action-list .item image{
+  width: 40rpx;
+  height: 40rpx;
+  display: block;
+}
+.action-list .item text{
+  font-size: 30rpx;
+  color:#666;
+}
+.other{
+  flex: 1;
+  color:#aaa;
+  font-size: 50rpx;
+}

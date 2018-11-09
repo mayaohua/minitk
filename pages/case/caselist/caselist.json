@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText": "分类列表",
+  "backgroundTextStyle": "dark",
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 50,
+  "backgroundColor": "#fff",
+  "usingComponents": {
+    "my-loadmore": "/components/loadmore/loadmore",
+    "my-listwrap": "/components/listwrap/listwrap"
+  }
+}

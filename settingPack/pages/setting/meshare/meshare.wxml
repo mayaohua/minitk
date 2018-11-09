@@ -1,0 +1,13 @@
+<view class="page">
+  <view class='content'>
+    <view>在任意页面转发累计达到 <text class='bold'>{{min_count}}</text> 次即可下载所有无水印高清图片</view>
+    <view>当前已经转发 <text class='bold'>{{share_count}}</text> 次</view>
+    <view>tips:点击右上角操作按钮可转发</view>
+  </view>
+  <view class="weui-footer weui-footer_fixed-bottom">
+      <view class="weui-footer__links">
+          <navigator url="" class="weui-footer__link">迷你图</navigator>
+      </view>
+      <view class="weui-footer__text">(๑• . •๑)</view>
+  </view>
+</view>

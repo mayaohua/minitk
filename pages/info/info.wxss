@@ -1,0 +1,188 @@
+/* pages/info/info.wxss */
+.page{
+  margin-bottom:80rpx;
+}
+.picwrap{
+  width: 100%;
+}
+.picwrap>image{
+  width: 100%;
+  min-height: 100px;
+}
+.picwrap .imgtext{
+  color: #666;
+  font-size: 32rpx;
+  line-height: 1.6;
+  margin:20rpx 10rpx;
+  letter-spacing: 1px;
+}
+.picwrap .imgtext navigator{
+  color:#1296db;
+  display: inline;
+  margin:10rpx;
+}
+.picwrap hr{
+  width: 100%;
+  background: #eee;
+  height: 1px;
+  display: block;
+}
+.picwrap .actionwrap{
+  width: 100%;
+  display: flex;
+  padding: 4rpx 0;
+}
+.picwrap .actionwrap view{
+  display: flex;
+  align-items: center;
+  justify-content:space-around;
+}
+.picwrap .actionwrap>view{
+  flex: 1;
+}
+.picwrap .actionwrap view image{
+  width: 50rpx;
+  height: 50rpx;
+}
+.picwrap .actionwrap view text{
+  color:#666;
+  font-size: 28rpx;
+  line-height: 50rpx;
+  margin-left: 4rpx;
+}
+.picwrap .actionwrap .right button::after{
+  border: none;
+}
+.picwrap .actionwrap .right button{
+  background: none;
+  padding:0;
+  line-height: 0;
+  font-size: none;
+}
+.commentwrap{
+  margin-top:10rpx;
+}
+.commentwrap .tip{
+  padding:16rpx 0;
+  background: rgb(241, 239, 239);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.commentwrap .tip text{
+  margin-left: 20rpx;
+  color:rgb(133, 131, 131);
+  font-size: 32rpx;
+}
+.commentwrap .tip>view{
+  display: flex;
+  align-items: center;
+  margin-right:20rpx;
+  
+}
+.commentwrap .tip>view text{
+  font-size: 28rpx;
+}
+.commentwrap .tip>view image{
+  width: 40rpx;
+  height: 40rpx;
+}
+.commentwrap .comment{
+  /* transform: scale(0.9,1) */
+  margin:0 20rpx;
+}
+.commentwrap .comment>.item{
+  padding:20rpx 0;
+  border-top:1px solid #eee;
+}
+.commentwrap .comment .item .user{
+  display: flex;
+  justify-content: space-between;
+}
+.commentwrap .comment .item .user .info{
+  display: flex;
+  align-items: center;
+}
+.commentwrap .comment .item .user .info image{
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 100%;
+}
+.commentwrap .comment .item .user .info .text{
+   display: flex;
+   flex-flow: column;
+   margin-left: 10rpx;
+}
+.commentwrap .comment .nike{
+  color:#222;
+  font-size: 30rpx;
+}
+.commentwrap .comment .msg{
+  color:rgb(128, 124, 124);
+  font-size: 30rpx;
+}
+.commentwrap .comment .item .user .info .text .time{
+  color:#aaa;
+  font-size: 30rpx;
+}
+.commentwrap .comment .item .user .userdata{
+  display: flex;
+  align-items: center;
+}
+.commentwrap .comment .item .user .userdata .comment{
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+}
+.commentwrap .comment .item .user .userdata text{
+  font-size: 30rpx;
+  margin-left: 4rpx;
+  color:#aaa;
+}
+.commentwrap .comment .item .user .userdata image{
+   width: 30rpx;
+   height: 30rpx;
+}
+.commentwrap .comment .item .com_content{
+  margin:10rpx 0;
+  margin-left: 90rpx;
+}
+.commentwrap .comment .item .com_content .listcon{
+  font-size: 30rpx;
+  margin:20rpx 0;
+}
+.commentwrap .comment .item .com_content .listcon text{
+  display: inline-block;
+}
+.commentwrap .comment .item .com_content .othercomwrap{
+  background: rgb(245, 245, 245);
+  border-radius: 2px;
+  padding:10rpx 20rpx;
+}
+.commentwrap .nocomment{
+  height: 160rpx;
+  line-height: 160rpx;
+  text-align: center;
+  font-size: 35rpx;
+  color:#ccc;
+}
+.mecom{
+  background: rgb(241, 239, 239);
+  padding:16rpx 20rpx;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+.mecom .input{
+  font-size: 32rpx;
+  background: white;
+  border-radius: 2px;
+  border-color: 1px solid gray;
+  padding:10rpx 8rpx;
+  color:#aaa;
+}
+.text-too-len{
+  display:block;
+  color:#aaa;
+  font-size:30rpx;
+}

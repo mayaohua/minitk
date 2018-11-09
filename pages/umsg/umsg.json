@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "消息通知",
+  "backgroundTextStyle": "dark",
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 50,
+  "usingComponents": {
+    "my-loadmore": "/components/loadmore/loadmore"
+  }
+}

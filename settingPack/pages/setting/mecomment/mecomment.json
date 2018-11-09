@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "我的评论",
+  "backgroundTextStyle": "dark",
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 50,
+  "usingComponents": {
+    "my-loadmore": "/components/loadmore/loadmore",
+    "my-scrolltop": "/components/scrolltop/scrolltop"
+  }
+}

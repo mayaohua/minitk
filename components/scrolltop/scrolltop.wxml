@@ -1,0 +1,5 @@
+<!--components/scrolltop.wxml-->
+
+<view  class='scrolltop {{scrollTopShow?"show":"hide"}}'>
+  <image bindtap='onScrollTop'  src='/public/img/ref_blue.png'></image>
+</view>

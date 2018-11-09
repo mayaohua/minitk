@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "my-item": "/components/item/item",
+    "my-scrolltop":"/components/scrolltop/scrolltop"
+  }
+}

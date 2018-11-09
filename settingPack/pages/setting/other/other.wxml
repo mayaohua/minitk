@@ -1,0 +1,5 @@
+<view class="page">
+      
+        <official-account bindload="loadAccount" binderror="loadAccountError"></official-account>
+    <text>若需交换小程序链接可留言联系</text>
+</view>

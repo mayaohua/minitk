@@ -1,0 +1,17 @@
+text{
+  color:#666;
+}
+.page{
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+  height: 100vh;
+}
+.content{
+  font-size: 35rpx;
+  padding:40rpx;
+}
+.bold{
+  font-size: 38rpx;
+  color:black;
+}

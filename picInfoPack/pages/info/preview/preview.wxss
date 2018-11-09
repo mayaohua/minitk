@@ -1,0 +1,51 @@
+action-sheet button::after{
+  border: none;
+}
+action-sheet button{
+  background-color:#FFFFFF;
+  position:relative;
+  padding:10rpx 0;
+  text-align:center;
+  font-size:36rpx;
+  display:block;
+  line-height: normal;
+  border-top:1px solid #eee;
+}
+.page{
+  background: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+  /* padding-top: 32px; */
+}
+/* .page .picwrap .weui-toptips{
+  background: skyblue;
+  position: fixed;
+  top:0;
+} */
+.picwrap{
+  position: relative;
+}
+.picwrap canvas{
+  position: absolute;
+  top:0;
+}
+
+.topage{
+  width: 80rpx;
+  height: 80rpx;
+  background: rgba(255, 255, 255,1);
+  position: fixed;
+  bottom:50rpx;
+  right: 50rpx;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+  border: 1px solid #1296db;
+}
+.topage cover-image{
+  width: 60%;
+  height: 60%;
+}

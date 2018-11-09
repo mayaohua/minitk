@@ -1,0 +1,74 @@
+<view class='page'>
+
+    <block hidden='!isLogin'>
+        <view class='comment'>
+            <view class='hr'></view>
+            <block wx:for="{{items}}" wx:for-index="index" wx:for-item="item" wx:key="*this">
+                <view class='item {{item.msg_status?"isread":""}}' wx:if="{{item.msg_type==1}}">
+                    <view class='new' wx:if="{{!item.msg_status}}"></view>
+                    <view class="info">
+                        <view class='gf'> <image  src='/public/img/mini.jpeg'></image> </view>  
+                        <view class='text'>
+                            <text class='nike'>{{item.msg_content.title}}</text>
+                            <text class='time'>{{item.msg_created_at}}</text>
+                            <text class='details' style='margin-top:0;'>{{item.msg_content.details}}</text>
+                            
+                        </view> 
+                    </view>
+                </view>
+                <view class='item {{item.msg_status?"isread":""}}' wx:if="{{item.msg_type==2}}">
+                    <view class='new' wx:if="{{!item.msg_status}}"></view>
+                    <view class="info">
+                    <navigator url='/picInfoPack/pages/info/usercenter/usercenter?id={{item.msg_from_uid}}' hover-class='none'>
+                        <image src='{{item.msg_from_user_pic}}'></image>
+                        </navigator>
+                        <view class='text'>
+                            <view class='title'><text class='nike'>{{item.msg_from_user_nike}} 回复评论</text><text class='time'>{{item.msg_created_at}}</text></view>
+                            
+                            <text class='details'>{{item.msg_content.from_user_comment}}</text>
+                        </view> 
+                    </view>
+                    <navigator class='pic_content' url='/pages/info/info?id={{item.msg_content.pic_id}}' hover-class='none'>
+                        <view class='left'>
+                            <view class='picwrap'><image src="{{item.msg_content.url}}"></image></view>
+                            <view class='sometext'>
+                                <text class='title'>{{item.msg_content.pic_content}}</text>
+                                <text class='case_name'>{{item.msg_content.case_name}}</text>
+                            </view>
+                        </view>
+                        <view class='right'>
+                        <image src='/public/img/right_jt.png'></image>
+                        </view>
+                    </navigator>
+                </view>
+                <view class='item {{item.msg_status?"isread":""}}'  wx:if="{{item.msg_type==3}}">
+                    <view class='new' wx:if="{{!item.msg_status}}"></view>
+                    <view class="info">
+                        <view class='gf'> <image  src='/public/img/mini.jpeg'></image> </view>  
+                        <view class='text'>
+                            <view class='title'><text class='nike gwtitle'>删评通知</text><text class='time'>{{item.msg_created_at}}</text></view>
+                            <text class='details'>{{item.msg_content.delete_text}}</text>
+                        </view> 
+                    </view>
+                    <navigator class='pic_content' url='/pages/info/info?id={{item.msg_content.pic_id}}' hover-class='none'>
+                        <view class='left'>
+                            <view class='picwrap'><image src="{{item.msg_content.url}}"></image></view>
+                            <view class='sometext'>
+                                <text class='title'>{{item.msg_content.pic_content}}</text>
+                                <text class='case_name'>{{item.msg_content.case_name}}</text>
+                            </view>
+                        </view>
+                        <view class='right'>
+                            <text class='title'>{{item.msg_content.to_user_comment}}</text>
+                            <image src='/public/img/right_jt.png'></image>
+                        </view>
+                    </navigator>
+                </view>
+            </block> 
+        </view>
+        <my-loadmore  index = "{{loadmore}}" bind:retry="onRetry"></my-loadmore>
+    </block>
+    <view hidden='isLogin'> 
+        <button wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="onGetUserInfo">授权登录</button>
+    </view>
+</view>

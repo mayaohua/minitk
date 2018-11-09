@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "my-topstatus": "/components/topbar/statusbar"
+  }
+}

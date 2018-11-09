@@ -1,0 +1,49 @@
+<view class='page'>
+  <view class='comment'>
+    <view class='tip' wx:if="{{items.length>0}}">
+        <text>评论列表 {{comment_count}}条</text>
+        <view bindtap='changeDesc'>
+          <text>时间{{com_desc?'倒叙':'正序'}}</text>
+          <image src="/public/img/list_{{com_desc?'red':'blue'}}.png"></image>
+        </view>
+      </view>
+    <view class='item' wx:for="{{items}}">
+      <view class='user'>
+              <view class="info">
+                  <image src='{{item.user_pic}}'></image>
+                  <view class='text'>
+                      <text class='nike'>{{item.user_nike}}</text>
+                      <text class='time'>{{item.com_created_date}}</text>
+                  </view> 
+              </view>
+              <view class='userdata'>
+                
+              </view>
+            </view>
+            <view class='com_content'>
+                <view class='listcon'>
+                      <text wx:if="{{item.p_user_id}}"><text class='msg'>回复@ </text><text class='nike' style="color:#1296db">{{item.p_user_nike}}</text> ：</text>
+                      <text class='msg'>{{item.showAll || !item.spliceText?item.com_content:item.spliceText}}</text>
+                      <text wx-if="{{item.spliceText}}" data-who='0' data-index='{{index}}' bindtap='onComTextAll' class='text-too-len' >[{{item.showAll?'点击收起':'点击展开'}}]</text>
+                </view>
+            </view>
+            <navigator class='pic_content' wx:if="{{item.pic_id != null}}" url='/pages/info/info?id={{item.pic_id}}' hover-class='none'>
+                <view class='left'>
+                  <view class='picwrap'><image src="{{item.url}}"></image></view>
+                  <view class='sometext'>
+                    <text class='title'>{{item.pic_content}}</text>
+                    <text class='case_name'>{{item.classify_name}}</text>
+                  </view>
+                </view>
+                <view class='right'>
+                  <image src='/public/img/right_jt.png'></image>
+                </view>
+            </navigator>
+            <view class='pic_content' wx:if="{{item.pic_id == null}}">
+            该帖已删除
+            </view>
+    </view>
+  </view>
+  <my-loadmore  index = "{{loadmore}}" bind:retry="onRetry"></my-loadmore>
+  <my-scrolltop scrollTopShow = "{{scrolltopshow}}" bind:scrollTopBack="onScrollTopBack"></my-scrolltop>
+</view>

@@ -1,0 +1,11 @@
+/* pages/components/loadmore/loadmore.wxss */
+@import '/public/style/weui.wxss';
+.loadmore{
+  font-size: 24rpx;
+}
+.show{
+  display: block;
+}
+.hide{
+  display: none;
+}

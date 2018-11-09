@@ -1,0 +1,130 @@
+/* pages/components/item.wxss */
+
+.items-wrap{
+  flex: none;
+  width: calc(100%/2);
+  flex-flow: column wrap;
+}
+.item-wrap{
+  box-sizing: border-box;
+  transform: scale(0.95);
+  counter-increment: item-counter;
+  overflow: hidden;
+  box-shadow: 10rpx 10rpx 30rpx #666;
+  position: relative;
+  
+}
+.item-wrap .classifly{
+  position: absolute;
+  background: rgba(255, 255, 255, 0.8);
+  top:0px;
+  z-index: 1;
+  left: 0;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.item-wrap .classifly text{
+  font-size: 24rpx;
+  padding:0 30rpx;
+}
+.item{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  font-size: 28rpx;
+  box-sizing: border-box;
+  color: black;
+  background: rgba(255, 255, 255, 0.5);
+}
+.item>image{
+  width: 100%;
+  min-height: 100px;
+}
+.item .text-view {
+  padding:12rpx 0;
+  display: block;
+  width: 95%;
+  display: -webkit-box ;
+  overflow: hidden; /*隐藏溢出的文本  */
+  text-overflow: clip;
+  word-break: break-all;/*自动换行*/
+  -moz-box-orient: vertical; /*从上到下自动排列子元素*/
+  -webkit-box-orient: vertical; 
+  -webkit-line-clamp:1; /*显示的行数*/
+  text-align: justify;
+}
+.item .text-view text{
+  color: #666;
+  font-size: 28rpx;
+  padding: 4rpx;
+}
+
+.item hr{
+  width: 100%;
+  background: #eee;
+  height: 1px;
+}
+.item .nav-view{
+  width: 90%;
+  padding:8rpx 0; 
+  display: flex;
+  justify-content:space-between;
+  align-items: center;
+}
+.item .nav-view view{
+  display: flex;
+  align-items:center;
+  justify-content: center;
+  /* flex: 1; */
+}
+.item .nav-view image{
+  width: 15px;
+  height: 15px;
+}
+.item .nav-view text{
+  color:#666;
+  font-size: 28rpx;
+  margin-left: 4rpx;
+}
+.item .user-view{
+  padding:8rpx 0;
+  width: 90%;
+  display: flex;
+  justify-content:space-between; 
+  align-content:center;
+}
+.item .user-view .info{
+   display: flex;
+  align-content:center;
+}
+.item .user-view .info image{
+  width: 80rpx;
+  height: 80rpx;
+   /* border:2px solid gray;  */
+  border-radius: 100%;
+}
+.item .user-view .info view{
+  display: flex;
+  margin-left: 20rpx;
+  flex-direction:column;
+}
+.item .user-view .info view .nike{
+  align-self:center;
+  /* margin-left: 10px; */
+  font-size: 28rpx;
+}
+.item .user-view .info view .time{
+  font-size: 24rpx;
+  color:#666;
+}
+.item .user-view .sex{
+  display: flex;
+}
+.item .user-view .sex image{
+  width: 40rpx;
+  height: 40rpx;
+  align-self:center;
+}

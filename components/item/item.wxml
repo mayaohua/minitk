@@ -1,0 +1,22 @@
+<!--pages/components/item.wxml-->
+<view class='page'>
+    <view class="item-wrap" wx:for="{{item.list}}" wx:for-index="ind" wx:for-item="it" wx:key="*this">
+    <!-- 分类 -->
+      <navigator url="{{'/pages/case/caselist/caselist?cid='+it.classify_id+'&case_name='+it.classify_name}}" open-type="navigate" hover-class="other-navigator-hover" class='classifly'>
+        <text>{{it.classify_name}}</text>
+      </navigator>
+      <!-- 每一项  -->
+      <view class='item' data-pid="{{pid}}" data-id="{{ind}}" data-pic_id="{{it.id}}" data-src='{{it.ourl}}'
+    bindtap="multipleTap">
+        <image lazy-load="true" src='{{it.url}}' style='height:{{it.height}}px'></image>
+          <view class='text-view'>
+            <text>{{it.cintent}}</text>
+          </view>
+            <hr/> 
+          <view class='nav-view'>
+            <view class='like'><image src='{{it.melike?itemImg.like[1]:itemImg.like[0]}}'></image><text>{{it.up_count}}人喜欢</text></view>
+            <view class='count'><image src='{{itemImg.comment[0]}}'></image><text>{{it.comment_count}}</text></view>
+          </view>
+      </view>
+    </view>
+</view>

@@ -1,0 +1,7 @@
+<view class='topbar' style='background:{{bgcolor}};height:0px'>
+  <my-topstatus bgcolor="{{bgcolor}}"></my-topstatus>
+  <view class='title'>
+    <image src="/public/img/right_jt.png" style='width:{{imgw}}px;height:{{imgh}}px;' bindtap="back"></image>
+    <text style='color:black;line-height:{{lineH}}px;'>{{title}}</text>
+  </view>
+</view>
