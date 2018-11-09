@@ -24,7 +24,6 @@ App({
     user_token: null,
     screen: {},
     fangdaourl: 'https://www.mymmy.cn/wx/tk/showimg?url=',
-    imghost: 'https://cdn.mymmy.cn/',
     action_data: false,
     userOtherInfo: null,
     minshare: 20,
@@ -257,11 +256,6 @@ App({
       newurl = this.globalData.fangdaourl + item.pic_photo
       ourl = item.pic_photo;
       mehost = 0;
-    // } else {
-    //   url = this.globalData.imghost + item.pic_urls + '?imageView2/0/format/jpg/q/75|imageslim'
-    //   newurl = this.globalData.imghost + item.pic_urls
-    //   ourl = item.pic_urls;
-    // }
     return { url, newurl, ourl ,mehost }
   },
   myrequest: function (url, method, data, success,fail,check) {
