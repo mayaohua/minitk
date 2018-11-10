@@ -18,7 +18,7 @@ Component({
     },
     requesturl:{
       type: String,
-      value:'https://www.mymmy.cn/wx/tk/tj',
+      value:'tj',
     },
     imgurllist:Array,
     scrolltopshow:Boolean,

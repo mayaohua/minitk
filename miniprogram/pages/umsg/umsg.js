@@ -8,7 +8,7 @@ Page({
     msgtype:1,
     page: 1,
     limit: 10,
-      requestURL: 'https://www.mymmy.cn/wx/tk/usermsg',
+      requestURL: 'usermsg',
     items: [],
     loadmore: 'loading',
     loadover: true,

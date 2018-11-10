@@ -114,7 +114,7 @@ Page({
     wx.showLoading({
       title: '正在提交',
     })
-    app.myrequest('https://www.mymmy.cn/wx/tk/usertalk', 'POST',{
+    app.myrequest('usertalk', 'POST',{
       content: content,
       contact: e.detail.value.contact.trim(),
     }, function (res) {

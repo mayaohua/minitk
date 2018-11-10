@@ -12,7 +12,7 @@ Page({
       height: 0,
     },
     ],
-    requesturl: 'https://www.mymmy.cn/wx/tk/melike',
+    requesturl: 'melike',
     requestAction: 'fresh', //load fresh
     loadmore: 'loading',
     scrolltopshow:false,

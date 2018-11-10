@@ -4,16 +4,13 @@ App({
     wx.cloud.init({
         traceUser: true,
     })
-    wx.cloud.init({
-        env: 'test'
-    })
     //获取设备信息
     this.getSySinfo();
     //删除临时返回页面
     this.globalData.action_data = null;
     //wx.clearStorage();
     typeof cb == "function" && cb(this.globalData.action_data);
-    //this.login();
+    this.login();
   },
   /**
    * 全局数据
@@ -22,7 +19,7 @@ App({
     userInfo: null,
     user_token: null,
     screen: {},
-    fangdaourl: 'https://www.mymy.tk/wx/tk/showimg?url=',
+      fangdaourl: 'https://read.html5.qq.com/image?src=forum&q=5&r=0&imgflag=7&imageUrl=',
     action_data: false,
     userOtherInfo: null,
     minshare: 20,
@@ -89,39 +86,44 @@ App({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
         if (res.code) {
-          //发起网络请求
-          wx.request({
-            url: 'https://www.mymy.tk/wx/tk/login?code=' + res.code,
-            data: {},
-            success: function (result) {
-              console.log('登录成功');
-              wx.setStorageSync('user_token', result.data.data.user_token);
-              that.globalData.user_token = result.data.data.user_token;
-              typeof cb == "function" && cb(that.globalData.user_token);
-              //重新请求
-              let action_data = that.globalData.action_data || null;
-              if (action_data && that.globalData.userInfo) {
-                let action_name = '';
-                let options = [];
-                for (let index in action_data){
-                  action_name = index;
-                  for (let ind in action_data[action_name]) {
-                    options.push(action_data[action_name][ind]);
-                  }
+            wx.cloud.init({
+                traceUser: true,
+            })
+            wx.cloud.callFunction({
+                name: 'User',
+                data: {
+                    $url: 'login',
+                    code: res.code
                 }
-                wx.showLoading({
-                  title: '数据加载中',
-                });
-                that[action_name].apply(that[action_name],options)
-                that.globalData.action_data = null;
-                typeof cb == "function" && cb(that.globalData.action_data);
-              }
-              //获取并更新用户资料
-              that.onSetUserInfo();
-            }, fail: function () {
-              console.log('登录失败');
-            }
-          })
+            })
+                .then(result => {
+                    console.log('登录成功');
+                    result = JSON.parse(result.result)
+                    wx.setStorageSync('user_token', result.data.user_token);
+                    that.globalData.user_token = result.data.user_token;
+                    typeof cb == "function" && cb(that.globalData.user_token);
+                    //重新请求
+                    let action_data = that.globalData.action_data || null;
+                    if (action_data && that.globalData.userInfo) {
+                        let action_name = '';
+                        let options = [];
+                        for (let index in action_data) {
+                            action_name = index;
+                            for (let ind in action_data[action_name]) {
+                                options.push(action_data[action_name][ind]);
+                            }
+                        }
+                        wx.showLoading({
+                            title: '数据加载中',
+                        });
+                        that[action_name].apply(that[action_name], options)
+                        that.globalData.action_data = null;
+                        typeof cb == "function" && cb(that.globalData.action_data);
+                    }
+                    //获取并更新用户资料
+                    that.onSetUserInfo();
+            })
+            .catch(console.error)
         } else {
           console.log('小程序登陆失败:' + res.errMsg)
         }
@@ -157,31 +159,32 @@ App({
     });
     //获取临时跳转页面
     var that = this;
-    wx.request({
-      url: 'https://www.mymy.tk/wx/tk/user',
-      method: 'POST',
-      data: {
-        user_token: this.globalData.user_token,
-        userInfo: this.globalData.userInfo
-      },
-      success: function (result) {
-        if (result.data.code == 0) {
-          console.log('同步用户数据成功');
-          wx.hideLoading();
-          //获取并设置用户分享次数
-          that.globalData.userOtherInfo = result.data.data;
-          typeof cb == "function" && cb(that.globalData.userOtherInfo);
-          callback && callback()
-        }else{
-          console.error('同步用户数据失败');
-            console.log(result)
-          
-        }
-      }, fail: function (e) {
-          
-        console.error('同步用户数据失败');
-      }
-    })
+
+      wx.cloud.callFunction({
+          name: 'User',
+          data: {
+              $url: 'saveUserInfo',
+              body: {
+                  user_token: that.globalData.user_token,
+                  userInfo: that.globalData.userInfo
+              }
+          }
+      }).then(result=>{
+          result =  result.result
+          if (result.code == 0) {
+              console.log('同步用户数据成功');
+              wx.hideLoading();
+              //获取并设置用户分享次数
+              that.globalData.userOtherInfo = result.data;
+              typeof cb == "function" && cb(that.globalData.userOtherInfo);
+              callback && callback()
+          } else {
+              console.error('同步用户数据失败');
+              console.log(result)
+          }
+      }).catch(error=>{
+          console.error('同步用户数据失败' + error);
+      })
   },
   
   /**
@@ -245,17 +248,21 @@ App({
     let ourl = "";
     let mehost = 1;
     size = size ? size :'300';
-    // if (item.pic_urls == "") {
-      var hz = item.pic_photo.split('.').splice(-1);
-      var startindex = item.pic_photo.indexOf(hz);
-      var path1 = item.pic_photo.substr(0, startindex);
-      var path2 = 'thumb.'+size+'_0.' + hz;
-      var path = path1 + path2;
-      url = this.globalData.fangdaourl + path
-      newurl = this.globalData.fangdaourl + item.pic_photo
-      ourl = item.pic_photo;
-      mehost = 0;
-    return { url, newurl, ourl ,mehost }
+    if (item.pic_photo == null ){
+        return { url, newurl, ourl, mehost }
+    }else{
+        var hz = item.pic_photo.split('.').splice(-1);
+        var startindex = item.pic_photo.indexOf(hz);
+        var path1 = item.pic_photo.substr(0, startindex);
+        var path2 = 'thumb.' + size + '_0.' + hz;
+        var path = path1 + path2;
+        url = this.globalData.fangdaourl + path
+        newurl = this.globalData.fangdaourl + item.pic_photo
+        ourl = item.pic_photo;
+        mehost = 0;
+        return { url, newurl, ourl, mehost }
+    }
+    
   },
   myrequest: function (url, method, data, success,fail,check) {
     //保存请求到内存
@@ -270,42 +277,81 @@ App({
     let usertoken = this.globalData.user_token;
     let that = this;
     let reqdata = (data == false) ? {} : data;
-    wx.request({
-      url: url,
-      method: method,
-      data: reqdata,
-      header: {
-        Authorization: usertoken
-      },
-      success: res => {
-        if (res.data.code == -2) {
-          wx.showLoading({
-            title: '登录中',
-          });
-          try{
-            wx.removeStorageSync('user_token');
-            that.globalData.user_token = null;
-            that.login();
-          }catch(error){
-            console.log(error);
+      wx.cloud.callFunction({
+          name: 'User',
+          data: {
+              $url: 'sendUrl',
+              url: url,
+              method: method,
+              headers: {
+                  Authorization: usertoken
+              },
+              body: reqdata
           }
-        } else {
-          wx.hideLoading();
-          success && success(res.data);
-        }
-      },
-      fail: error => {
-        wx.hideLoading();
-        if (fail){
-          fail(error);
-        }else{
-          wx.showToast({
-            title: '数据获取失败，请稍后重试',
-            icon: '',
-          })
-        }
-      }
-    })
+      }).then(result=>{
+          let res = result.result
+          if (res.code == -2) {
+              wx.showLoading({
+                  title: '登录中',
+              });
+              try {
+                  wx.removeStorageSync('user_token');
+                  that.globalData.user_token = null;
+                  that.login();
+              } catch (error) {
+                  console.log(error);
+              }
+          } else {
+              wx.hideLoading();
+              success && success(res);
+          }
+      }).catch(error=>{
+          
+          if (fail) {
+              fail(error);
+          } else {
+              wx.showToast({
+                  title: '数据获取失败，请稍后重试',
+                  icon: '',
+              })
+          }
+      })
+    // wx.request({
+    //   url: url,
+    //   method: method,
+    //   data: reqdata,
+    //   header: {
+    //     Authorization: usertoken
+    //   },
+    //   success: res => {
+    //     if (res.data.code == -2) {
+    //       wx.showLoading({
+    //         title: '登录中',
+    //       });
+    //       try{
+    //         wx.removeStorageSync('user_token');
+    //         that.globalData.user_token = null;
+    //         that.login();
+    //       }catch(error){
+    //         console.log(error);
+    //       }
+    //     } else {
+    //       wx.hideLoading();
+    //       success && success(res.data);
+    //     }
+    //   },
+    //   fail: error => {
+    //     wx.hideLoading();
+    //     if (fail){
+    //       fail(error);
+    //     }else{
+    //       wx.showToast({
+    //         title: '数据获取失败，请稍后重试',
+    //         icon: '',
+    //       })
+    //     }
+    //   }
+    // })
   },
   addShareCount:function(success,fail){
     wx.showLoading({
@@ -313,7 +359,7 @@ App({
       mask: true,
     })
     var that = this;
-    this.myrequest('https://www.mymy.tk/wx/tk/share', 'POST', false, function (res) {
+    this.myrequest('share', 'POST', false, function (res) {
       if (res.code == 0) {
         wx.showToast({
           title: '分享成功',

@@ -108,7 +108,7 @@ Page({
       icon: 'loading',
     });
     wx.request({
-      url: 'https://www.mymmy.cn/wx/tk/msg',
+      url: 'msg',
       method: "POST",
       data: {
         content : content

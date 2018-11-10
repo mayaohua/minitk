@@ -4,7 +4,7 @@ const app = getApp()
 Page({
   data: {
     column: [{list: [],height: 0,},{list: [],height: 0,}],
-    requesturl:'https://www.mymy.tk/wx/tk/tj',
+    requesturl:'tj',
     requestAction: 'fresh', //load fresh
     loadmore: 'loading',
     scrolltopshow:false,

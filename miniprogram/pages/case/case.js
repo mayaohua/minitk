@@ -8,7 +8,7 @@ Page({
     imgH : 0,
     showNavIndex:0,
     //防盗链代理地址
-    fangdaourl: 'https://www.mymmy.cn/wx/tk/showimg?url=',
+    fangdaourl: app.globalData.fangdaourl,
     nav:[
     ],
     tapmsg:'',
@@ -122,36 +122,30 @@ Page({
    * 获取数据
    */
   getDataList: function (callback){
-    const requestTask = wx.request({
-      url: 'https://www.mymmy.cn/wx/tk/case',
-      header: {
-        'content-type': 'application/json'
-      },
-      success: res => {
-        if (res.statusCode == 200 && res.data.code==0) {
-          var data = [];
-          var that = this;
-          data = res.data.data.map(function (item, index){
-            var hz = item.classify_icon_url.split('.').splice(-1);
-            var startindex = item.classify_icon_url.indexOf(hz);
-            var path1 = item.classify_icon_url.substr(0, startindex);
-            var path2 = 'thumb.224_0.' + hz;
-            item.classify_icon_url = that.data.fangdaourl + path1 + path2;
-            return item
-          })
-          this.setData({ nav: data});
-          wx.setStorageSync('caselist', data);
-          callback();
-        }else{
+      let that = this;
+      app.myrequest('case', 'GET', false, function (res) {
+          if (res.code == 0) {
+              var data = [];
+              data = res.data.map(function (item, index) {
+                  var hz = item.classify_icon_url.split('.').splice(-1);
+                  var startindex = item.classify_icon_url.indexOf(hz);
+                  var path1 = item.classify_icon_url.substr(0, startindex);
+                  var path2 = 'thumb.224_0.' + hz;
+                  item.classify_icon_url = that.data.fangdaourl + path1 + path2;
+                  return item
+              })
+              that.setData({ nav: data });
+              wx.setStorageSync('caselist', data);
+              callback();
+          } else {
+              callback('error');
+              that.setData({ nav: [], navChlid: [] });
+          }
+      },error=>{
           callback('error');
-          this.setData({ nav: [], navChlid:[] });
-        }
-      },
-      fail: function (err) {
-        callback('error');
-        this.setData({ nav: [], navChlid: [] });
-      }
-    })
+          that.setData({ nav: [], navChlid: [] });
+      })
+    
   },
   /**
    * 改变子菜单

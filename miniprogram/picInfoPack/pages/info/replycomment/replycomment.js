@@ -123,7 +123,7 @@ Page({
       });
       var that = this;
       //提交数据
-      app.myrequest('https://www.mymmy.cn/wx/tk/addcomment', 'POST',requestData, function (res) {
+      app.myrequest('addcomment','POST',requestData, function (res) {
         if (res.code == 0) {
           ++app.globalData.userOtherInfo.mecomment_count;
           wx.showToast({

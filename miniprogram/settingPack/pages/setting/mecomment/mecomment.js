@@ -7,7 +7,7 @@ Page({
   data: {
     page: 1,
     limit: 10,
-    requestURL : 'https://www.mymmy.cn/wx/tk/mecomment',
+    requestURL : 'mecomment',
     items:[],
     loadmore: 'loading',
     loadover:true,
@@ -133,14 +133,18 @@ Page({
     return data.map((item)=>{
       //重新设置链接
       let path = app.getImgPath(item,30);
+        
       item.url = path.url;
       item.newurl = path.newurl;
       item.ourl = path.ourl;
       var crtTime = new Date(item.com_created_at);
       item.com_created_date = util.formatTime("yyyy年MM月dd日 hh:mm", crtTime);
       //重新设置文字
-      let content = util.spliceText(item.com_content,maxlen);
-      if (content != false) { item.spliceText = content; item.showAll = false;}
+        if (item.com_content){
+            let content = util.spliceText(item.com_content,maxlen);
+            if (content != false) { item.spliceText = content; item.showAll = false;}
+        }
+      
       return item;
     })
   },

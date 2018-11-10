@@ -63,7 +63,7 @@ Page({
     var that = this;
     var comm = [];
     let des = this.data.com_des ? 'esc' : 'desc';
-    app.myrequest('https://www.mymmy.cn/wx/tk/commentlist/' + this.data.pic_id + '?des=' + des, 'GET', false, function (res) {
+    app.myrequest('commentlist/' + this.data.pic_id + '?des=' + des, 'GET', false, function (res) {
       if (res.code == 0) {
         let data = res.data;
         if (!data.length){
@@ -79,7 +79,7 @@ Page({
 
   getInfo:function(){
     var that = this;
-    app.myrequest('https://www.mymmy.cn/wx/tk/info?id=' + this.data.pic_id,'GET',false,function(res){
+    app.myrequest('info?id=' + this.data.pic_id,'GET',false,function(res){
       if (res.code == 0) {
         let data = res.data;
         // 重新设置图片宽高
@@ -228,7 +228,7 @@ Page({
     var that = this;
     let data = this.data.infodata;
     let msg = "";
-    app.myrequest('https://www.mymmy.cn/wx/tk/me_thumbs_up?id=' + data.pic_id, 'GET', false, function (res) {
+    app.myrequest('me_thumbs_up?id=' + data.pic_id, 'GET', false, function (res) {
       wx.hideLoading();
       if (res.code == 0) {
         if (data.me_thumbs_up) {

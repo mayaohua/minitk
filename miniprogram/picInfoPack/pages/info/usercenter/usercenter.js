@@ -34,7 +34,7 @@ Page({
         }
       })
     }else{
-      app.myrequest('https://www.mymmy.cn/wx/tk/usercenter?user_id=' + user_id, 'GET', false, function (res) {
+      app.myrequest('usercenter?user_id=' + user_id, 'GET', false, function (res) {
         if (res.code == 0) {
           that.setData({ item: res.data })
         } else {

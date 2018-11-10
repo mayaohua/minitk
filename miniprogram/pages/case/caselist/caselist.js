@@ -13,7 +13,7 @@ Page({
     }
     ],
     cid:0,
-    requesturl: 'https://www.mymmy.cn/wx/tk/caselist/',
+    requesturl: 'caselist/',
     requestAction: '', //load fresh
     loadmore: 'loading',
     scrolltopshow:false,

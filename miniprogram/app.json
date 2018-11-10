@@ -64,6 +64,6 @@
 		"request": 10000,
 		"downloadFile": 20000
 	},
-	"debug": false
+	"debug": true
 
 }
